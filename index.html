@@ -2,9 +2,11 @@
 <html>
 <head>
   <title>Примерный крутящий момент на валу редуктора</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       font-family: Arial, sans-serif;
+      padding: 10px;
     }
 
     .container {
@@ -75,7 +77,7 @@
       var r = diam / 2;
       var M = F * r;
 
-      document.getElementById("tensionForce").textContent = "Сила натяжения одной ветки каната, которая наматывается на барабан: " + F + " Н";
+      document.getElementById("tensionForce").textContent = "Сила натяжения одной ветки каната: " + F + " Н";
       document.getElementById("torque").textContent = "Примерный крутящий момент на валу редуктора: " + M + " Н/м";
     }
   </script>
