@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Примерный крутящий момент на валу редуктора</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Примерный крутящий момент на валу редуктора</h2>
+    <label>
+      Номинальный вес груза:
+      <input type="number" id="gryz" />
+    </label>
+    <label>
+      КПД полиспаста:
+      <input type="number" id="ece" />
+    </label>
+    <label>
+      Количество веток каната:
+      <input type="number" id="branch" />
+    </label>
+    <label>
+      Диаметр барабана в метрах:
+      <input type="number" id="diam" />
+    </label>
+    <button onclick="calculate()">Рассчитать</button>
+    <div class="result">
+      <p id="tensionForce"></p>
+      <p id="torque"></p>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      var gryz = parseFloat(document.getElementById("gryz").value);
+      var ece = parseFloat(document.getElementById("ece").value);
+      var branch = parseInt(document.getElementById("branch").value);
+      var diam = parseFloat(document.getElementById("diam").value);
+
+      var G = gryz * 9.81;
+      var F = G / (branch * ece);
+      var r = diam / 2;
+      var M = F * r;
+
+      document.getElementById("tensionForce").textContent = "Сила натяжения одной ветки каната, которая наматывается на барабан: " + F + " Н";
+      document.getElementById("torque").textContent = "Примерный крутящий момент на валу редуктора: " + M + " Н/м";
+    }
+  </script>
+</body>
+</html>
